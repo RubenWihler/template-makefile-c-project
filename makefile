@@ -5,6 +5,7 @@
 # Version: 1.0
 # Fonctionnalités: Compilation en mode debug et release, nettoyage du projet
 # Usage: make [all|debug|release|clean|help]
+# Repository GitHub: <https://github.com/RubenWihler/template-makefile-c-project>
 #
 # ---------- Fonctionnement ----------: 
 #
