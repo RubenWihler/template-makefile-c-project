@@ -5,7 +5,6 @@
 # Version: 1.0
 # Fonctionnalités: Compilation en mode debug et release, nettoyage du projet
 # Usage: make [all|debug|release|clean|help]
-# Repository GitHub: <https://github.com/RubenWihler/template-makefile-c-project>
 #
 # ---------- Fonctionnement ----------: 
 #
@@ -47,7 +46,7 @@ DEBUGER := gdb
 CFLAGS := -Wall -Wextra -pedantic
 DEBUG_FLAGS := -g
 RELEASE_FLAGS := -O3 -Werror
-NAME := app
+NAME :=app
 
 # Librairies
 LIBS := -lm
@@ -56,8 +55,8 @@ LIBS := -lm
 SRC_DIR := src
 OBJ_DIR := obj
 BIN_DIR := bin
-DEBUG_BIN := $(BIN_DIR)/debug/debug
-RELEASE_BIN := $(BIN_DIR)/release/release
+DEBUG_BIN := $(BIN_DIR)/debug/$(NAME)
+RELEASE_BIN := $(BIN_DIR)/release/$(NAME)
 
 # Recherche récursive des fichiers source et headers
 # (excluant les fichier cachés .*)
@@ -82,11 +81,11 @@ release: $(RELEASE_BIN)
 # Compilation des exécutables
 $(DEBUG_BIN): $(OBJ_FILES)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $^ -o $(NAME) $(LIBS)
+	$(CC) $(CFLAGS) $^ -o $@ $(LIBS)
 
 $(RELEASE_BIN): $(OBJ_FILES)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $^ -o $(NAME) $(LIBS)
+	$(CC) $(CFLAGS) $^ -o $@ $(LIBS)
 
 # Compilation des fichiers objets
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
